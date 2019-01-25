@@ -12,7 +12,7 @@
 
       var ncmb = new NCMB(appKey, clientKey);
       var OmikujiScore = ncmb.DataStore("OmikujiScore");
-      var key = "運勢";
+      var key = "result";
 
     var count = 0;
     var countup = 0;
@@ -22,39 +22,44 @@
         if(num==1){
             document.querySelector("#result").innerHTML = "大吉";
             document.querySelector("#result").style.backgroundColor = "yellow";
-            setTimeout(countup, 1000);
+            setTimeout(countup, 5000);
+            msg="大吉";
 
         }else if(num==2){
             document.querySelector("#result").innerHTML = "中吉";
             document.querySelector("#result").style.backgroundColor = "pink";
-            setTimeout(countup, 1000);
+            setTimeout(countup, 5000);
+            msg="中吉";
 
         }else if(num==3){
             document.querySelector("#result").innerHTML = "小吉";
             document.querySelector("#result").style.backgroundColor = "red";
-            setTimeout(countup, 1000);
+            setTimeout(countup, 5000);
+            msg="小吉";
 
         }else if(num==4){
             document.querySelector("#result").innerHTML = "凶";
             document.querySelector("#result").style.backgroundColor = "green";
-            setTimeout(countup, 1000);
+            setTimeout(countup, 5000);
+            msg="凶";
 
         }else if(num==5){
             document.querySelector("#result").innerHTML = "大凶";
             document.querySelector("#result").style.backgroundColor = "red";
-            setTimeout(countup, 1000);
-
+            setTimeout(countup, 5000);
+            msg="大凶";
         }
-        omikuji2(num);
+       omikuji2(msg);
     }
 
-    function omikuji2(num){
+    function omikuji2(msg){
       var data=new OmikujiScore();
-      data.set(key,num).save.then(function(result){
-        })
-        .catch(function(err){
-
-        });
+      data.set(key,msg).save()
+      .then(function(sucsses){
+        alert("二フクラmobile backendへの登録ができました。");
+      })
+      .catch(function(error){
+      });
     }
 
     </script>
